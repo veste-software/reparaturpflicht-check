@@ -1,6 +1,6 @@
 # Reparaturpflicht-Check
 
-**Stage:** building · **Platform:** web · **Score:** 3.3/5 · **Spend:** $5.13
+**Stage:** building · **Platform:** web · **Score:** 3.3/5 · **Spend:** $5.70
 
 For people in Germany (later DACH and the EU) with a broken washing machine, dishwasher, fridge, dryer, TV/monitor, smartphone or tablet: enter brand and model and see until when the manufacturer must repair it under the new right to repair, computed from the model's EU database market dates plus the legal spare-parts period, with the manufacturer's repair contact and a ready-to-send repair request letter.
 
