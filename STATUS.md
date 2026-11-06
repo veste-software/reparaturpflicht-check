@@ -1,6 +1,6 @@
 # Reparaturpflicht-Check
 
-**Stage:** building · **Platform:** web · **Score:** 3.3/5 · **Spend:** $5.82
+**Stage:** building · **Platform:** web · **Score:** 3.3/5 · **Spend:** $5.90
 
 For people in Germany (later DACH and the EU) with a broken washing machine, dishwasher, fridge, dryer, TV/monitor, smartphone or tablet: enter brand and model and see until when the manufacturer must repair it under the new right to repair, computed from the model's EU database market dates plus the legal spare-parts period, with the manufacturer's repair contact and a ready-to-send repair request letter.
 
@@ -27,6 +27,7 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 - [ ] [task 17] Blocked: A1 Fixture and A8b prerendered /qr/1417304 (The sandbox has no network access to eprel.ec.europa.eu; a human must fetch https://eprel.ec.europa.eu/api/product/1417304 once and commit it as src/fixtures/eprel-1417304.json plus the meta file.)
 - [ ] [task 18] Blocked: C3/C4 other group pages with real EPREL example records (Needs real registration numbers from manufacturer datasheets and network access to EPREL; not available in the sandbox and must not be invented. A human should run scripts/refresh-fixtures.mjs with real numbers.)
 - [ ] [task 19] Blocked: C3/C4 real EPREL example records and EPREL group-name confirmation (Network access is blocked in the sandbox, so real registration numbers and records could not be found or fetched; pages use computed examples instead.)
+- [ ] [task 20] Blocked: E3 Performance basics (JS gzip size) and E4 Final pass (Bash was denied in this session, so npm test, build, lint, build:preview, check:dist and the gzip size check could not be run. A session with shell access is needed.)
 
 ## Recommendation
 
