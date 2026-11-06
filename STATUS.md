@@ -1,6 +1,6 @@
 # Reparaturpflicht-Check
 
-**Stage:** qa · **Platform:** web · **Score:** 3.3/5 · **Spend:** $6.65
+**Stage:** parked · **Platform:** web · **Score:** 3.3/5 · **Spend:** $6.85
 
 For people in Germany (later DACH and the EU) with a broken washing machine, dishwasher, fridge, dryer, TV/monitor, smartphone or tablet: enter brand and model and see until when the manufacturer must repair it under the new right to repair, computed from the model's EU database market dates plus the legal spare-parts period, with the manufacturer's repair contact and a ready-to-send repair request letter.
 
@@ -8,6 +8,7 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 
 ## Needs you
 
+- [ ] Parked: QA still failing after 3 rounds: Real EPREL fixture src/fixtures/eprel-1417304.json is missing. The proxy test uses a synthetic record, there is no rendered Bosch/WAJ240L2SN/27.12.2034/München result, /qr/1417304 is not prerendered (dist/qr has only the client shell), and group-page examples are computed Rechenbeispiele, not real …. Fix it, then `npm run studio -- unpark reparaturpflicht-check`, or `npm run studio -- kill reparaturpflicht-check`
 - [ ] [task 1] Register a domain and connect Cloudflare Pages (or chosen host); set env vars from .env.example
 - [ ] [task 2] Fill operator data into Impressum and Datenschutz drafts
 - [ ] [task 3] Have a lawyer review the legal pages, the repair-request letter template and the result wording (RDG)
@@ -51,6 +52,11 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 - [ ] [task 41] Read the EPREL Public API terms, and apply for affiliate programs if monetisation is wanted.
 - [ ] [task 42] Blocked: [QA round 2] Real EPREL fixture src/fixtures/eprel-1417304.json is missing (Needs network access to EPREL. A human must run `node scripts/refresh-fixtures.mjs 1417304` and commit the result.)
 - [ ] [task 43] Blocked: [QA round 2] Lookup, proxy and letter never run against a real EPREL response (Needs real EPREL responses to confirm the contactDetails and date field shapes and the EPREL group names. It depends on the fixture.)
+- [ ] [task 44] From a networked machine run `node scripts/refresh-fixtures.mjs 1417304` (or `curl https://eprel.ec.europa.eu/api/product/1417304`), commit the raw JSON as src/fixtures/eprel-1417304.json plus the .meta.json with the fetch time, then have the Builder wire up the fixture, proxy test, prerendered /qr/1417304/ and real group-page examples.
+- [ ] [task 45] Find real registration numbers for the other six product groups (datasheets or labels) and fetch their fixtures to confirm the EPREL group names (tumbledryers*, smartphones*, electronicdisplays, washerdryers*, dishwashers*, refrigeratingappliances*).
+- [ ] [task 46] Have a lawyer review the Impressum, Datenschutz, the letter text and the result wording (RDG).
+- [ ] [task 47] Read the EPREL Public API terms and request a public API key (phase 2 only).
+- [ ] [task 48] Join affiliate programs and set the affiliate env vars; optionally set up cookie-free analytics.
 
 ## Recommendation
 
@@ -114,3 +120,4 @@ Free tool with clearly labelled affiliate links (Free for users; affiliate commi
 - 2026-11-06 10:33 · qa · all planned tasks done
 - 2026-11-06 10:39 · building · QA round 2 found 2 blocker(s)
 - 2026-11-06 10:44 · qa · all planned tasks done
+- 2026-11-06 10:50 · parked · QA still failing after 3 rounds: Real EPREL fixture src/fixtures/eprel-1417304.json is missing. The proxy test uses a synthetic record, there is no rendered Bosch/WAJ240L2SN/27.12.2034/München result, /qr/1417304 is not prerendered (dist/qr has only the client shell), and group-page examples are computed Rechenbeispiele, not real …
