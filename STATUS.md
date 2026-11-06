@@ -1,6 +1,6 @@
 # Reparaturpflicht-Check
 
-**Stage:** building · **Platform:** web · **Score:** 3.3/5 · **Spend:** $5.90
+**Stage:** parked · **Platform:** web · **Score:** 3.3/5 · **Spend:** $5.96
 
 For people in Germany (later DACH and the EU) with a broken washing machine, dishwasher, fridge, dryer, TV/monitor, smartphone or tablet: enter brand and model and see until when the manufacturer must repair it under the new right to repair, computed from the model's EU database market dates plus the legal spare-parts period, with the manufacturer's repair contact and a ready-to-send repair request letter.
 
@@ -8,6 +8,7 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 
 ## Needs you
 
+- [ ] Parked: the builder made no progress in 2 runs in a row (2 tasks still open). Fix it, then `npm run studio -- unpark reparaturpflicht-check`, or `npm run studio -- kill reparaturpflicht-check`
 - [ ] [task 1] Register a domain and connect Cloudflare Pages (or chosen host); set env vars from .env.example
 - [ ] [task 2] Fill operator data into Impressum and Datenschutz drafts
 - [ ] [task 3] Have a lawyer review the legal pages, the repair-request letter template and the result wording (RDG)
@@ -28,6 +29,8 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 - [ ] [task 18] Blocked: C3/C4 other group pages with real EPREL example records (Needs real registration numbers from manufacturer datasheets and network access to EPREL; not available in the sandbox and must not be invented. A human should run scripts/refresh-fixtures.mjs with real numbers.)
 - [ ] [task 19] Blocked: C3/C4 real EPREL example records and EPREL group-name confirmation (Network access is blocked in the sandbox, so real registration numbers and records could not be found or fetched; pages use computed examples instead.)
 - [ ] [task 20] Blocked: E3 Performance basics (JS gzip size) and E4 Final pass (Bash was denied in this session, so npm test, build, lint, build:preview, check:dist and the gzip size check could not be run. A session with shell access is needed.)
+- [ ] [task 21] Blocked: E3 Performance basics: measure total JS gzip size on / (< 50 KB) (Bash is denied in this environment, so the build and gzip sizes of dist/_astro could not be measured.)
+- [ ] [task 22] Blocked: E4 Final pass: run test, lint, build, build:preview, check:dist and walk SPEC §6 items 1-18 (Bash is denied in this environment, so none of the commands could be run.)
 
 ## Recommendation
 
@@ -84,3 +87,4 @@ Free tool with clearly labelled affiliate links (Free for users; affiliate commi
 - 2026-11-06 08:47 · specced · spec written
 - 2026-11-06 08:58 · planned · scaffold and plan written
 - 2026-11-06 09:05 · building · build started
+- 2026-11-06 10:06 · parked · the builder made no progress in 2 runs in a row (2 tasks still open)
