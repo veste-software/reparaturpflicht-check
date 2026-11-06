@@ -1,6 +1,6 @@
 # Reparaturpflicht-Check
 
-**Stage:** qa · **Platform:** web · **Score:** 3.3/5 · **Spend:** $6.18
+**Stage:** building · **Platform:** web · **Score:** 3.3/5 · **Spend:** $6.41
 
 For people in Germany (later DACH and the EU) with a broken washing machine, dishwasher, fridge, dryer, TV/monitor, smartphone or tablet: enter brand and model and see until when the manufacturer must repair it under the new right to repair, computed from the model's EU database market dates plus the legal spare-parts period, with the manufacturer's repair contact and a ready-to-send repair request letter.
 
@@ -37,6 +37,11 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 - [ ] [task 27] Join affiliate programs and set PUBLIC_AFFILIATE_PARTS_URL_TEMPLATE and PUBLIC_AFFILIATE_REFURB_URL
 - [ ] [task 28] Submit to fitting directories (AlternativeTo, Product Hunt) and post in relevant communities following each one's rules, as described in growth/PLAN.md
 - [ ] [task 29] Fill in the operator data in Impressum and Datenschutz and have a lawyer review the legal pages
+- [ ] [task 30] Fetch the real EPREL record once: curl https://eprel.ec.europa.eu/api/product/1417304, save it unchanged as src/fixtures/eprel-1417304.json and add src/fixtures/eprel-1417304.meta.json with fetchedAt and url (or run node scripts/refresh-fixtures.mjs 1417304).
+- [ ] [task 31] Pick real EPREL registration numbers for the other six product groups, so the group pages can show real worked examples with a fetch date.
+- [ ] [task 32] Have a lawyer review the legal pages (Impressum, Datenschutz) and fill in the operator placeholders.
+- [ ] [task 33] Confirm the exact start date and the wording of § 479b BGB on gesetze-im-internet.de, and verify the rule table against EUR-Lex.
+- [ ] [task 34] Join affiliate programs and set PUBLIC_AFFILIATE_PARTS_URL_TEMPLATE and PUBLIC_AFFILIATE_REFURB_URL when ready. Optionally set the analytics env vars.
 
 ## Recommendation
 
@@ -96,3 +101,4 @@ Free tool with clearly labelled affiliate links (Free for users; affiliate commi
 - 2026-11-06 10:06 · parked · the builder made no progress in 2 runs in a row (2 tasks still open)
 - 2026-11-06 10:15 · seo · resumed by the operator
 - 2026-11-06 10:21 · qa · seo and conversion foundations written
+- 2026-11-06 10:28 · building · QA round 1 found 2 blocker(s)
