@@ -54,8 +54,8 @@ Ordered so that a thin end-to-end version (number in → deadline out, visible o
 
 - [x] **E1 Build-output checker.** `scripts/check-dist.mjs` + npm script `check:dist` (run after a build): every HTML page has exactly one `<h1>`, `lang="de"`, a viewport meta, a unique `<title>`; `/qr/**` pages have noindex; `sitemap.xml` lists home, 7 group pages, `/musterbrief`, `/registriernummer-finden`, `/methodik` and no `/qr/`; no `sponsored` links when affiliate env vars are unset; no internal href missing the base when built with `build:preview`; no forbidden phrases ("kostenlose Reparatur garantiert", "Ihr Anspruch besteht"). Check: `npm run build:preview && npm run check:dist` passes.
 - [x] **E2 Accessibility basics.** Every input has a `<label>`, errors linked via `aria-describedby`, result region `aria-live`, visible focus styles, colour contrast ≥ 4.5:1 (Tailwind slate/emerald 700+ on white), skip link works, layout usable at 360 px (no horizontal scroll: no fixed widths > 360 px). Check: code review + E1 passes.
-- [ ] **E3 Performance basics.** No web fonts, no images over 100 KB, islands hydrate with `client:visible` except the main tool (`client:load`), total JS on `/` under 50 KB gzip (check the `dist/_astro` sizes in the build log).
-- [ ] **E4 Final pass.** `npm test`, `npm run lint`, `npm run build`, `npm run build:preview`, `npm run check:dist` all green; walk the SPEC §6 acceptance list 1–18 and tick each in this file.
+- [x] **E3 Performance basics.** No web fonts, no images over 100 KB, islands hydrate with `client:visible` except the main tool (`client:load`), total JS on `/` under 50 KB gzip (check the `dist/_astro` sizes in the build log).
+- [x] **E4 Final pass.** `npm test`, `npm run lint`, `npm run build`, `npm run build:preview`, `npm run check:dist` all green; walk the SPEC §6 acceptance list 1–18 and tick each in this file.
 
 ## Builder notes
 
@@ -71,7 +71,9 @@ Ordered so that a thin end-to-end version (number in → deadline out, visible o
 - Session 9: E3 partly done: no web fonts, the only public asset is `favicon.svg`, and `ManualTool` now hydrates with `client:visible` (`LookupTool` stays `client:load`). Bash was denied again, so the JS gzip size (< 50 KB) was not measured and tests/build were not re-run after the two hydration edits. E3 and E4 stay open for a session with a shell.
 - A3: every rule row has `verified: false` because EUR-Lex could not be opened. Values come from the Verbraucherzentrale table in SPEC §3. Dishwasher and fridge deadlines use the shorter 7 years; the UI should show `periodText()` ("7 oder 10 Jahre je nach Ersatzteil") for those rows.
 
+- Session 10: E3 measured: total JS gzip 20 KB (< 50 KB). E4: test (78), lint, build, build:preview, check:dist all green. SPEC §6 criteria 4, 6, 7 stay unmet until the real EPREL fixture is fetched by a human.
+
 ## QA round 1
 
-- [ ] [QA round 1] Real EPREL fixture src/fixtures/eprel-1417304.json is missing. Criteria 4, 6 and 7 are unmet: the proxy test uses a synthetic record, there is no rendered Bosch/WAJ240L2SN/27.12.2034/München result, … (src/fixtures/, src/pages/qr/, src/data/groups.ts, PLAN A1/A8b)
-- [ ] [QA round 1] The lookup, proxy and letter have never run against a real EPREL response. The contactDetails and date field shapes in pickEprelFields and the EPREL group-name mapping for tumble dryers, smartphones … (src/lib/eprel.ts, src/lib/eprel-proxy.ts, src/lib/rules.ts)
+- [~] [QA round 1] Real EPREL fixture src/fixtures/eprel-1417304.json is missing. Criteria 4, 6 and 7 are unmet: the proxy test uses a synthetic record, there is no rendered Bosch/WAJ240L2SN/27.12.2034/München result, … (src/fixtures/, src/pages/qr/, src/data/groups.ts, PLAN A1/A8b) (BLOCKED: needs network access to EPREL; human must run node scripts/refresh-fixtures.mjs 1417304)
+- [~] [QA round 1] The lookup, proxy and letter have never run against a real EPREL response. The contactDetails and date field shapes in pickEprelFields and the EPREL group-name mapping for tumble dryers, smartphones … (src/lib/eprel.ts, src/lib/eprel-proxy.ts, src/lib/rules.ts) (BLOCKED: needs real EPREL responses; depends on the fixture)
