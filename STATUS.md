@@ -1,6 +1,6 @@
 # Reparaturpflicht-Check
 
-**Stage:** building · **Platform:** web · **Score:** 3.3/5 · **Spend:** $3.52
+**Stage:** building · **Platform:** web · **Score:** 3.3/5 · **Spend:** $4.06
 
 For people in Germany (later DACH and the EU) with a broken washing machine, dishwasher, fridge, dryer, TV/monitor, smartphone or tablet: enter brand and model and see until when the manufacturer must repair it under the new right to repair, computed from the model's EU database market dates plus the legal spare-parts period, with the manufacturer's repair contact and a ready-to-send repair request letter.
 
@@ -23,6 +23,7 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 - [ ] [task 13] Add the site to Google Search Console and submit sitemap.xml
 - [ ] [task 14] Blocked: A1 Fixture: fetch https://eprel.ec.europa.eu/api/product/1417304 and commit it as src/fixtures/eprel-1417304.json with a meta file (Network access is denied in the builder sandbox. A hand-written fixture would be invented data. A human must fetch the response once and add the fetch timestamp. A5, A7, A8, B4, B5 and C1+ depend on it.)
 - [ ] [task 15] Blocked: A1 Fixture (and therefore A7, A8, B4, B5, C1+ acceptance tests) (The sandbox has no network access, so the real EPREL response for 1417304 cannot be fetched. A human must run curl https://eprel.ec.europa.eu/api/product/1417304 and commit the output as src/fixtures/eprel-1417304.json plus a .meta.json with the fetch time.)
+- [ ] [task 16] Blocked: A8b Prerendered /qr/1417304 page and 'Beispiel ansehen' link; fixture-based assertions (SPEC 6.6/6.7) (Needs the real EPREL response src/fixtures/eprel-1417304.json (A1). The sandbox denies network access and a hand-written fixture would be invented data. A human must fetch https://eprel.ec.europa.eu/api/product/1417304 once and add the meta file.)
 
 ## Recommendation
 
