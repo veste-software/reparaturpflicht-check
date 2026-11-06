@@ -1,6 +1,6 @@
 # Reparaturpflicht-Check
 
-**Stage:** planned · **Platform:** web · **Score:** 3.3/5 · **Spend:** $2.90
+**Stage:** building · **Platform:** web · **Score:** 3.3/5 · **Spend:** $3.28
 
 For people in Germany (later DACH and the EU) with a broken washing machine, dishwasher, fridge, dryer, TV/monitor, smartphone or tablet: enter brand and model and see until when the manufacturer must repair it under the new right to repair, computed from the model's EU database market dates plus the legal spare-parts period, with the manufacturer's repair contact and a ready-to-send repair request letter.
 
@@ -21,6 +21,7 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 - [ ] [task 11] Join one spare-parts and one refurbished-device affiliate program and set PUBLIC_AFFILIATE_PARTS_URL_TEMPLATE and PUBLIC_AFFILIATE_REFURB_URL
 - [ ] [task 12] Optionally create a cookie-free analytics site (e.g. Plausible) and set PUBLIC_ANALYTICS_DOMAIN and PUBLIC_ANALYTICS_SCRIPT_URL
 - [ ] [task 13] Add the site to Google Search Console and submit sitemap.xml
+- [ ] [task 14] Blocked: A1 Fixture: fetch https://eprel.ec.europa.eu/api/product/1417304 and commit it as src/fixtures/eprel-1417304.json with a meta file (Network access is denied in the builder sandbox. A hand-written fixture would be invented data. A human must fetch the response once and add the fetch timestamp. A5, A7, A8, B4, B5 and C1+ depend on it.)
 
 ## Recommendation
 
@@ -76,3 +77,4 @@ Free tool with clearly labelled affiliate links (Free for users; affiliate commi
 - 2026-11-06 08:40 · scouted · picked from the bench: score 3.3, under the usual 3.5; the review panel is skipped, the prototype is how it is judged
 - 2026-11-06 08:47 · specced · spec written
 - 2026-11-06 08:58 · planned · scaffold and plan written
+- 2026-11-06 09:05 · building · build started
