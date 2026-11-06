@@ -70,3 +70,8 @@ Ordered so that a thin end-to-end version (number in → deadline out, visible o
 - Session 8: E2 done by code review (labels, aria-describedby on the registration input, aria-live regions, skip link to #main, new global `:focus-visible` outline in `global.css`, no low-contrast text classes, no wide fixed widths). Bash was denied, so tests/build were not re-run after the CSS-only change. E3 (JS gzip sizes need a shell) and E4 stay open.
 - Session 9: E3 partly done: no web fonts, the only public asset is `favicon.svg`, and `ManualTool` now hydrates with `client:visible` (`LookupTool` stays `client:load`). Bash was denied again, so the JS gzip size (< 50 KB) was not measured and tests/build were not re-run after the two hydration edits. E3 and E4 stay open for a session with a shell.
 - A3: every rule row has `verified: false` because EUR-Lex could not be opened. Values come from the Verbraucherzentrale table in SPEC §3. Dishwasher and fridge deadlines use the shorter 7 years; the UI should show `periodText()` ("7 oder 10 Jahre je nach Ersatzteil") for those rows.
+
+## QA round 1
+
+- [ ] [QA round 1] Real EPREL fixture src/fixtures/eprel-1417304.json is missing. Criteria 4, 6 and 7 are unmet: the proxy test uses a synthetic record, there is no rendered Bosch/WAJ240L2SN/27.12.2034/München result, … (src/fixtures/, src/pages/qr/, src/data/groups.ts, PLAN A1/A8b)
+- [ ] [QA round 1] The lookup, proxy and letter have never run against a real EPREL response. The contactDetails and date field shapes in pickEprelFields and the EPREL group-name mapping for tumble dryers, smartphones … (src/lib/eprel.ts, src/lib/eprel-proxy.ts, src/lib/rules.ts)
