@@ -4,6 +4,9 @@ import { lookupRegistration, idFromQrPath, type LookupOutcome } from '../lib/loo
 import { joinBase } from '../lib/url';
 import { track } from '../lib/analytics';
 import { ResultView } from './ResultView';
+import LetterGenerator from './LetterGenerator';
+import { computeDeadline } from '../lib/deadline';
+import { groupFromEprel } from '../lib/rules';
 
 const base = import.meta.env.BASE_URL;
 const proxyBase: string = import.meta.env.PUBLIC_EPREL_PROXY_URL || joinBase(base, 'api/eprel/') ;
@@ -102,6 +105,13 @@ export default function LookupTool({ readFromPath = false }: { readFromPath?: bo
           </p>
         )}
         {outcome && <ResultView record={outcome.record} today={todayIso()} fetchedAt={outcome.fetchedAt} purchaseDate={purchaseDate} />}
+        {outcome && (
+          <LetterGenerator
+            record={outcome.record}
+            today={todayIso()}
+            deadline={computeDeadline(groupFromEprel(outcome.record.productGroup), outcome.record.onMarketEndDate, todayIso())}
+          />
+        )}
       </div>
     </div>
   );

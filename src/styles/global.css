@@ -4,4 +4,19 @@
   .no-print {
     display: none !important;
   }
+  /* Letter-only printing: set by LetterGenerator right before window.print(). */
+  html.printing-letter body * {
+    visibility: hidden;
+  }
+  html.printing-letter [data-letter-print],
+  html.printing-letter [data-letter-print] * {
+    visibility: visible;
+  }
+  html.printing-letter [data-letter-print] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border: 0;
+  }
 }

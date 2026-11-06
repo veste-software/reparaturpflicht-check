@@ -1,6 +1,8 @@
 import { useState } from 'preact/hooks';
 import { GROUPS } from '../lib/rules';
 import { ManualResult } from './ManualResult';
+import LetterGenerator from './LetterGenerator';
+import { computeDeadline } from '../lib/deadline';
 
 const todayIso = () => new Date().toISOString().slice(0, 10);
 
@@ -64,6 +66,14 @@ export default function ManualTool({ presetGroup = '' }: { presetGroup?: string 
         </div>
       </div>
       <ManualResult groupId={groupId} mode={mode} endDate={endDate} purchaseDate={purchaseDate} today={todayIso()} />
+      {groupId && (mode === 'still_selling' || endDate) && (
+        <LetterGenerator
+          key={groupId}
+          manual={{ groupId, model: '' }}
+          today={todayIso()}
+          deadline={computeDeadline(groupId, mode === 'ended' ? endDate : null, todayIso())}
+        />
+      )}
     </details>
   );
 }

@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/url';
+import MusterbriefTool from '../components/MusterbriefTool';
+---
+
+<Base
+  title="Musterbrief Reparaturanfrage an den Hersteller | Reparaturpflicht-Check"
+  description="Musterbrief für die Reparaturanfrage beim Hersteller: Gerät und Fehler eintragen, Brief kopieren, drucken oder per E-Mail senden. Alles in deinem Browser."
+>
+  <h1 class="text-2xl font-bold sm:text-3xl">Musterbrief: Reparatur beim Hersteller anfragen</h1>
+  <p class="mt-4">
+    Wähle dein Gerät, trage Name, Anschrift und den Fehler ein und kopiere den fertigen Brief oder drucke ihn. Deine
+    Angaben verlassen deinen Browser nicht. Den Brief schickst du an die Service-Adresse des Herstellers, die du in
+    der <a class="underline" href={withBase('')}>Fristprüfung mit Registriernummer</a> findest.
+  </p>
+  <MusterbriefTool client:load />
+
+  <h2 class="mt-10 text-xl font-bold">Was tun, wenn der Hersteller ablehnt?</h2>
+  <ul class="mt-3 list-disc space-y-2 pl-6">
+    <li>Bitte um eine schriftliche Begründung der Ablehnung, falls sie nicht schon in der Antwort steht.</li>
+    <li>
+      Nach den gesetzlichen Regeln darf der Hersteller nur ablehnen, wenn die Reparatur unmöglich ist. Ob das im
+      Einzelfall zutrifft, kann dieser Check nicht beurteilen.
+    </li>
+    <li>Die Reparatur kann ein angemessenes Entgelt kosten. Lass dir deshalb vorab einen Kostenvoranschlag geben.</li>
+    <li>
+      Wenn du dir unsicher bist, hilft eine Verbraucherzentrale oder eine Rechtsberatung weiter. Dieser Check ersetzt
+      beides nicht.
+    </li>
+  </ul>
+  <p class="mt-6 text-sm font-semibold">Keine Rechtsberatung.</p>
+</Base>
