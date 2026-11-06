@@ -7,15 +7,43 @@ interface Props {
   description: string;
   /** true for /qr/* result pages (SPEC §5.2) */
   noindex?: boolean;
+  /** extra JSON-LD objects (e.g. FAQPage) */
+  jsonLd?: Record<string, unknown>[];
 }
 
-const { title, description, noindex = false } = Astro.props;
+const { title, description, noindex = false, jsonLd = [] } = Astro.props;
 
 const analyticsDomain = import.meta.env.PUBLIC_ANALYTICS_DOMAIN;
 const analyticsSrc = import.meta.env.PUBLIC_ANALYTICS_SCRIPT_URL;
 const analyticsEnabled = Boolean(analyticsDomain && analyticsSrc);
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+
+const siteRoot = new URL(withBase(''), Astro.site ?? Astro.url).href;
+const isHome = canonical === siteRoot;
+const ld: Record<string, unknown>[] = [...jsonLd];
+if (isHome) {
+  ld.push({
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Reparaturpflicht-Check',
+    url: canonical,
+    description,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Web',
+    inLanguage: 'de',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  });
+} else if (!noindex) {
+  ld.push({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Reparaturpflicht-Check', item: siteRoot },
+      { '@type': 'ListItem', position: 2, name: title.split(':')[0].split(' | ')[0], item: canonical },
+    ],
+  });
+}
 
 const nav = [
   { href: withBase(''), label: 'Check' },
@@ -33,7 +61,17 @@ const nav = [
     <title>{title}</title>
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
-    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Reparaturpflicht-Check" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ld.map((o) => <script type="application/ld+json" set:html={JSON.stringify(o).replace(/</g, '\\u003c')} />)}
+    <link rel="icon"type="image/svg+xml" href={withBase('favicon.svg')} />
     <link rel="sitemap" href={withBase('sitemap.xml')} />
     <meta name="generator" content={Astro.generator} />
     {

@@ -1,6 +1,6 @@
 # Reparaturpflicht-Check
 
-**Stage:** parked · **Platform:** web · **Score:** 3.3/5 · **Spend:** $5.96
+**Stage:** seo · **Platform:** web · **Score:** 3.3/5 · **Spend:** $5.96
 
 For people in Germany (later DACH and the EU) with a broken washing machine, dishwasher, fridge, dryer, TV/monitor, smartphone or tablet: enter brand and model and see until when the manufacturer must repair it under the new right to repair, computed from the model's EU database market dates plus the legal spare-parts period, with the manufacturer's repair contact and a ready-to-send repair request letter.
 
@@ -8,7 +8,6 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 
 ## Needs you
 
-- [ ] Parked: the builder made no progress in 2 runs in a row (2 tasks still open). Fix it, then `npm run studio -- unpark reparaturpflicht-check`, or `npm run studio -- kill reparaturpflicht-check`
 - [ ] [task 1] Register a domain and connect Cloudflare Pages (or chosen host); set env vars from .env.example
 - [ ] [task 2] Fill operator data into Impressum and Datenschutz drafts
 - [ ] [task 3] Have a lawyer review the legal pages, the repair-request letter template and the result wording (RDG)
@@ -88,3 +87,4 @@ Free tool with clearly labelled affiliate links (Free for users; affiliate commi
 - 2026-11-06 08:58 · planned · scaffold and plan written
 - 2026-11-06 09:05 · building · build started
 - 2026-11-06 10:06 · parked · the builder made no progress in 2 runs in a row (2 tasks still open)
+- 2026-11-06 10:15 · seo · resumed by the operator

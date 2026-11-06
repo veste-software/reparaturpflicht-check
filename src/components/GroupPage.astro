@@ -17,7 +17,17 @@ const exampleDeadline = result.kind === 'covered' ? formatDate(result.deadline) 
 const faq = [...content.faq, ...SHARED_FAQ];
 ---
 
-<Base title={content.title} description={content.description}>
+<Base
+  title={content.title}
+  description={content.description}
+  jsonLd={[
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    },
+  ]}
+>
   <h1 class="text-2xl font-bold sm:text-3xl">{content.h1}</h1>
   {content.intro.map((p) => <p class="mt-4">{p}</p>)}
 

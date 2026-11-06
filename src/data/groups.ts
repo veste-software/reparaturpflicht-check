@@ -50,7 +50,7 @@ export const GROUP_CONTENT: GroupContent[] = [
   {
     id: 'waschmaschine',
     slug: 'waschmaschine',
-    title: 'Waschmaschine: Bis wann muss der Hersteller reparieren? | Reparaturpflicht-Check',
+    title: 'Recht auf Reparatur Waschmaschine: Frist prüfen',
     description:
       'Für Haushaltswaschmaschinen gilt eine Ersatzteil- und Reparaturfrist von 10 Jahren ab dem Ende des Verkaufs. So berechnest du die Frist für dein Modell.',
     h1: 'Waschmaschine: Bis wann muss der Hersteller reparieren?',
@@ -91,7 +91,7 @@ export const GROUP_CONTENT: GroupContent[] = [
   {
     id: 'geschirrspueler',
     slug: 'geschirrspueler',
-    title: 'Geschirrspüler: Bis wann muss der Hersteller reparieren? | Reparaturpflicht-Check',
+    title: 'Recht auf Reparatur Geschirrspüler: Frist prüfen',
     description:
       'Für Haushaltsgeschirrspüler gelten EU-Ersatzteilfristen von 7 oder 10 Jahren je nach Teil. So findest du heraus, bis wann dein Hersteller reparieren muss.',
     h1: 'Geschirrspüler: Bis wann muss der Hersteller reparieren?',
@@ -128,7 +128,7 @@ export const GROUP_CONTENT: GroupContent[] = [
   {
     id: 'kuehlschrank',
     slug: 'kuehlschrank',
-    title: 'Kühlschrank und Gefrierschrank: Reparaturpflicht des Herstellers | Reparaturpflicht-Check',
+    title: 'Recht auf Reparatur Kühlschrank: Ersatzteil-Frist',
     description:
       'Für Kühl- und Gefriergeräte gelten EU-Ersatzteilfristen von 7 oder 10 Jahren je nach Teil. Prüfe, bis wann dein Hersteller reparieren muss.',
     h1: 'Kühlschrank und Gefrierschrank: Bis wann muss der Hersteller reparieren?',
@@ -165,7 +165,7 @@ export const GROUP_CONTENT: GroupContent[] = [
   {
     id: 'waschtrockner',
     slug: 'waschtrockner',
-    title: 'Waschtrockner: Reparaturpflicht des Herstellers | Reparaturpflicht-Check',
+    title: 'Recht auf Reparatur Waschtrockner: Frist prüfen',
     description:
       'Für Haushaltswaschtrockner gilt eine Ersatzteil- und Reparaturfrist von 10 Jahren ab dem Ende des Verkaufs. Berechne die Frist für dein Modell.',
     h1: 'Waschtrockner: Bis wann muss der Hersteller reparieren?',
@@ -202,7 +202,7 @@ export const GROUP_CONTENT: GroupContent[] = [
   {
     id: 'trockner',
     slug: 'trockner',
-    title: 'Wäschetrockner: Reparaturpflicht des Herstellers | Reparaturpflicht-Check',
+    title: 'Recht auf Reparatur Wäschetrockner: Frist prüfen',
     description:
       'Für Wäschetrockner gelten neue EU-Ersatzteilregeln seit dem 1. Juli 2025 mit 10 Jahren Frist. Berechne, bis wann dein Hersteller reparieren muss.',
     h1: 'Wäschetrockner: Bis wann muss der Hersteller reparieren?',
@@ -239,7 +239,7 @@ export const GROUP_CONTENT: GroupContent[] = [
   {
     id: 'fernseher-monitor',
     slug: 'fernseher-monitor',
-    title: 'Fernseher und Monitor: Reparaturpflicht des Herstellers | Reparaturpflicht-Check',
+    title: 'Recht auf Reparatur Fernseher: Ersatzteil-Frist',
     description:
       'Für Fernseher und Monitore gelten EU-Ersatzteilregeln mit 7 Jahren Frist. Prüfe, bis wann dein Hersteller reparieren muss.',
     h1: 'Fernseher und Monitor: Bis wann muss der Hersteller reparieren?',
@@ -276,7 +276,7 @@ export const GROUP_CONTENT: GroupContent[] = [
   {
     id: 'smartphone-tablet',
     slug: 'smartphone-tablet',
-    title: 'Smartphone und Tablet: Reparaturpflicht des Herstellers | Reparaturpflicht-Check',
+    title: 'Recht auf Reparatur Smartphone: Ersatzteil-Frist',
     description:
       'Für Smartphones und Tablets gelten EU-Ersatzteilregeln seit dem 20. Juni 2025 mit 7 Jahren Frist. Prüfe, bis wann dein Hersteller reparieren muss.',
     h1: 'Smartphone und Tablet: Bis wann muss der Hersteller reparieren?',
