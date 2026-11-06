@@ -1,0 +1,7 @@
+---
+import GroupPage from '../components/GroupPage.astro';
+import { contentBySlug } from '../data/groups';
+const content = contentBySlug('trockner')!;
+---
+
+<GroupPage content={content} />
