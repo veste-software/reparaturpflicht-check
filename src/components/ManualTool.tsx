@@ -2,6 +2,7 @@ import { useState } from 'preact/hooks';
 import { GROUPS } from '../lib/rules';
 import { ManualResult } from './ManualResult';
 import LetterGenerator from './LetterGenerator';
+import AffiliateSlots from './AffiliateSlots';
 import { computeDeadline } from '../lib/deadline';
 
 const todayIso = () => new Date().toISOString().slice(0, 10);
@@ -73,6 +74,9 @@ export default function ManualTool({ presetGroup = '' }: { presetGroup?: string 
           today={todayIso()}
           deadline={computeDeadline(groupId, mode === 'ended' ? endDate : null, todayIso())}
         />
+      )}
+      {groupId && (mode === 'still_selling' || endDate) && (
+        <AffiliateSlots groupId={groupId} deadline={computeDeadline(groupId, mode === 'ended' ? endDate : null, todayIso())} />
       )}
     </details>
   );

@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import { withBase } from '../lib/url';
 import LookupTool from '../components/LookupTool';
 import ManualTool from '../components/ManualTool';
+import { GROUPS, periodText } from '../lib/rules';
 ---
 
 <Base
@@ -20,5 +21,27 @@ import ManualTool from '../components/ManualTool';
   <p class="mt-6 text-sm text-slate-600">
     Wo finde ich die Nummer? <a class="underline" href={withBase('registriernummer-finden')}>Registriernummer finden</a>
   </p>
+  <section class="mt-10" aria-labelledby="rules-heading">
+    <h2 id="rules-heading" class="text-xl font-bold">Die Regeln in Kürze</h2>
+    <ul class="mt-3 list-disc space-y-1 pl-6">
+      {GROUPS.map((g) => (
+        <li>
+          {g.slug ? <a class="underline" href={withBase(g.slug)}>{g.label}</a> : g.label}: {periodText(g)}
+        </li>
+      ))}
+    </ul>
+    <p class="mt-3">
+      Die Frist beginnt nicht beim Kauf, sondern wenn das letzte Gerät des Modells in der EU in Verkehr gebracht wurde.
+      Die Reparatur kann ein angemessenes Entgelt kosten. Mehr dazu unter
+      <a class="underline" href={withBase('methodik')}>Methodik und Quellen</a>.
+    </p>
+  </section>
+  <section class="mt-8" aria-labelledby="more-heading">
+    <h2 id="more-heading" class="text-xl font-bold">Weiterlesen</h2>
+    <ul class="mt-3 list-disc space-y-1 pl-6">
+      <li><a class="underline" href={withBase('musterbrief')}>Musterbrief für die Reparaturanfrage</a></li>
+      <li><a class="underline" href={withBase('registriernummer-finden')}>EPREL-Registriernummer finden</a></li>
+    </ul>
+  </section>
   <p class="mt-6 text-sm text-slate-600">Keine Rechtsberatung.</p>
 </Base>

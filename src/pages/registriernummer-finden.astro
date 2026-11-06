@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/url';
+import LookupTool from '../components/LookupTool';
+---
+
+<Base
+  title="EPREL-Registriernummer finden: Energielabel, QR-Code, Datenblatt | Reparaturpflicht-Check"
+  description="Wo steht die EPREL-Registriernummer deines Geräts? So findest du sie auf dem Energielabel, im Datenblatt oder in der EPREL-Datenbank und liest sie aus dem QR-Link."
+>
+  <h1 class="text-2xl font-bold sm:text-3xl">EPREL-Registriernummer finden</h1>
+  <p class="mt-4">
+    Mit der Registriernummer kann der Check dein Modell in der EU-Produktdatenbank EPREL nachschlagen und das Datum
+    lesen, an dem das letzte Gerät des Modells in Verkehr gebracht wurde. Daraus ergibt sich die Frist, bis zu der der
+    Hersteller Ersatzteile liefern und auf Verlangen reparieren muss. Die Reparatur kann ein angemessenes Entgelt
+    kosten.
+  </p>
+
+  <h2 class="mt-8 text-xl font-bold">Wo steht die Nummer?</h2>
+  <ul class="mt-3 list-disc space-y-2 pl-6">
+    <li>
+      <strong>Auf dem Energielabel:</strong> Geräte mit EU-Energielabel ab 2021 tragen einen QR-Code. Er führt zu einem
+      Link der Form <code class="break-all">https://eprel.ec.europa.eu/qr/1417304</code>. Die Zahl am Ende ist die
+      Registriernummer.
+    </li>
+    <li>
+      <strong>Im Produktdatenblatt oder in der Anleitung:</strong> Viele Hersteller drucken den QR-Link oder die Nummer
+      dort ab.
+    </li>
+    <li>
+      <strong>Beim Händler oder in der Online-Produktbeschreibung:</strong> Dort ist das Label oft als Bild eingebunden.
+    </li>
+    <li>
+      <strong>In der EPREL-Datenbank:</strong> Auf <a class="underline" href="https://eprel.ec.europa.eu/">eprel.ec.europa.eu</a>
+      kannst du nach Produktgruppe und Modellkennung suchen. Die Registriernummer steht in der Adresszeile der
+      Produktseite.
+    </li>
+  </ul>
+  <p class="mt-3">
+    Hast du das Label nicht mehr, hilft der <a class="underline" href={withBase('')}>manuelle Modus</a> auf der
+    Startseite: Gerätegruppe wählen und das Datum von Hand eintragen.
+  </p>
+
+  <h2 class="mt-8 text-xl font-bold">Link-Trick: aus dem Label-Link wird dein Ergebnis</h2>
+  <p class="mt-3">
+    Ersetze im Link vom Energielabel den Teil <code class="break-all">eprel.ec.europa.eu/qr/</code> durch die Adresse
+    dieser Seite und <code>/qr/</code>. Aus <code class="break-all">https://eprel.ec.europa.eu/qr/1417304</code> wird
+    dann <code class="break-all">{withBase('qr/1417304')}</code> auf dieser Domain. Du kannst den Link auch einfach
+    unten einfügen.
+  </p>
+
+  <h2 class="mt-8 text-xl font-bold">Nummer direkt prüfen</h2>
+  <LookupTool client:load />
+
+  <p class="mt-8 text-sm font-semibold">Keine Rechtsberatung.</p>
+</Base>

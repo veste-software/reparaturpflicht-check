@@ -5,6 +5,7 @@ import { joinBase } from '../lib/url';
 import { track } from '../lib/analytics';
 import { ResultView } from './ResultView';
 import LetterGenerator from './LetterGenerator';
+import AffiliateSlots from './AffiliateSlots';
 import { computeDeadline } from '../lib/deadline';
 import { groupFromEprel } from '../lib/rules';
 
@@ -106,11 +107,18 @@ export default function LookupTool({ readFromPath = false }: { readFromPath?: bo
         )}
         {outcome && <ResultView record={outcome.record} today={todayIso()} fetchedAt={outcome.fetchedAt} purchaseDate={purchaseDate} />}
         {outcome && (
+          <>
           <LetterGenerator
             record={outcome.record}
             today={todayIso()}
             deadline={computeDeadline(groupFromEprel(outcome.record.productGroup), outcome.record.onMarketEndDate, todayIso())}
           />
+          <AffiliateSlots
+            groupId={groupFromEprel(outcome.record.productGroup)?.id ?? null}
+            model={outcome.record.modelIdentifier}
+            deadline={computeDeadline(groupFromEprel(outcome.record.productGroup), outcome.record.onMarketEndDate, todayIso())}
+          />
+          </>
         )}
       </div>
     </div>

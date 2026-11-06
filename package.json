@@ -13,6 +13,7 @@
     "preview": "astro preview",
     "test": "vitest run",
     "lint": "astro check",
+    "check:dist": "node scripts/check-dist.mjs",
     "astro": "astro"
   },
   "dependencies": {

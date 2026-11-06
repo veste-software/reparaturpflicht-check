@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import { GROUPS, periodText } from '../lib/rules';
+import { formatDate } from '../lib/format';
+import { withBase } from '../lib/url';
+---
+
+<Base
+  title="Methodik und Quellen | Reparaturpflicht-Check"
+  description="So rechnet der Reparaturpflicht-Check: Quellen, Regeltabelle mit EUR-Lex-Links, Datenaktualität, Platzhalter-Daten und Grenzen der Auskunft."
+>
+  <h1 class="text-2xl font-bold sm:text-3xl">Methodik und Quellen</h1>
+  <p class="mt-4">
+    Seit Ende Juli 2026 können Verbraucher nach den §§ 479a ff. BGB vom Hersteller die Reparatur bestimmter Geräte
+    verlangen. Wie lange die Pflicht läuft, richtet sich nach den EU-Ökodesign-Verordnungen zu Ersatzteilen. Dieser Check
+    verbindet beides mit den Daten aus der EU-Produktdatenbank EPREL.
+  </p>
+
+  <h2 class="mt-8 text-xl font-bold">So wird gerechnet</h2>
+  <ol class="mt-3 list-decimal space-y-2 pl-6">
+    <li>Aus der Registriernummer holen wir bei EPREL das Datum, an dem das letzte Gerät des Modells in Verkehr gebracht wurde.</li>
+    <li>Wir ordnen die EPREL-Produktgruppe einer Gerätegruppe aus der Tabelle unten zu.</li>
+    <li>Wir addieren den Zeitraum der Gruppe (7 oder 10 Jahre) auf dieses Datum. Der Kaufzeitpunkt spielt keine Rolle.</li>
+    <li>Liegt das Datum vor dem Beginn der Ersatzteilpflicht der Gruppe, gilt die Pflicht für das Modell nicht.</li>
+  </ol>
+
+  <h2 class="mt-8 text-xl font-bold">Regeltabelle</h2>
+  <div class="mt-3 overflow-x-auto">
+    <table class="w-full border-collapse text-left text-sm">
+      <caption class="sr-only">Gerätegruppen, Zeiträume und Verordnungen</caption>
+      <thead>
+        <tr class="border-b border-slate-400">
+          <th scope="col" class="py-2 pr-3">Gruppe</th>
+          <th scope="col" class="py-2 pr-3">Zeitraum</th>
+          <th scope="col" class="py-2 pr-3">Gilt ab</th>
+          <th scope="col" class="py-2 pr-3">Verordnung</th>
+          <th scope="col" class="py-2">Prüfstatus</th>
+        </tr>
+      </thead>
+      <tbody>
+        {GROUPS.map((g) => (
+          <tr class="border-b border-slate-200 align-top">
+            <th scope="row" class="py-2 pr-3 font-semibold">
+              {g.slug ? <a class="underline" href={withBase(g.slug)}>{g.label}</a> : g.label}
+            </th>
+            <td class="py-2 pr-3">{periodText(g)}</td>
+            <td class="py-2 pr-3">{formatDate(g.appliesFrom)}</td>
+            <td class="py-2 pr-3"><a class="underline" href={g.regulationUrl}>{g.regulation}</a></td>
+            <td class="py-2">{g.verified ? 'gegen EUR-Lex geprüft' : 'noch nicht gegen EUR-Lex geprüft'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="mt-3 text-sm">
+    Die Zeiträume stammen aus der Übersicht der
+    <a class="underline" href="https://www.verbraucherzentrale.de/wissen/vertraege-reklamation/kundenrechte/recht-auf-reparatur-mehr-rechte-seit-31-juli-2026-124253">Verbraucherzentrale</a>.
+    Wo der Zeitraum je nach Ersatzteil 7 oder 10 Jahre beträgt, rechnet der Check vorsichtig mit dem kürzeren Zeitraum
+    und weist darauf hin.
+  </p>
+
+  <h2 class="mt-8 text-xl font-bold">Quellen</h2>
+  <ul class="mt-3 list-disc space-y-2 pl-6">
+    <li>Gesetzestext: <a class="underline" href="https://www.gesetze-im-internet.de/bgb/__479b.html">§ 479b BGB und die §§ 479a bis 479g</a> auf gesetze-im-internet.de.</li>
+    <li>Produktdaten: EPREL, Europäische Kommission, <a class="underline" href="https://eprel.ec.europa.eu/">eprel.ec.europa.eu</a>.</li>
+    <li>Ökodesign-Verordnungen: siehe Links in der Tabelle (EUR-Lex).</li>
+  </ul>
+
+  <h2 class="mt-8 text-xl font-bold">Datenaktualität</h2>
+  <p class="mt-3">
+    Abfragen laufen über einen Proxy, der Ergebnisse bis zu 24 Stunden zwischenspeichert. Jedes Ergebnis zeigt, wann es
+    abgerufen wurde. Die Rechenbeispiele auf den Gerätegruppen-Seiten sind gekennzeichnete Beispiele und keine
+    abgerufenen EPREL-Datensätze.
+  </p>
+
+  <h2 class="mt-8 text-xl font-bold">Platzhalter und fehlende Daten</h2>
+  <p class="mt-3">
+    Trägt der Hersteller in EPREL kein Enddatum ein oder liegt es drei Jahre oder mehr in der Zukunft, behandeln wir das
+    Modell als „wird noch verkauft“. Wir nennen dann nur ein frühestes Fristende und keine feste Frist.
+  </p>
+
+  <h2 class="mt-8 text-xl font-bold">Grenzen</h2>
+  <ul class="mt-3 list-disc space-y-2 pl-6">
+    <li>Die Angaben in EPREL machen die Hersteller selbst. Fehler und Lücken sind möglich.</li>
+    <li>Die Reparatur kann ein angemessenes Entgelt kosten. Der Check sagt nichts über Preise.</li>
+    <li>Ob die Reparatur im Einzelfall unmöglich ist, kann der Check nicht beurteilen.</li>
+    <li>Andere Geräte, etwa Staubsauger oder Akkus, sind hier nicht abgedeckt.</li>
+  </ul>
+  <p class="mt-6 text-sm font-semibold">Keine Rechtsberatung. Datenquelle: EPREL, Europäische Kommission.</p>
+</Base>
