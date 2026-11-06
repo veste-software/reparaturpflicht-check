@@ -51,7 +51,7 @@ const faq = [...content.faq, ...SHARED_FAQ];
       Mit Registriernummer geht es auf der <a class="underline" href={withBase('')}>Startseite</a> automatisch. Hier
       kannst du das Datum von Hand eingeben.
     </p>
-    <ManualTool client:load presetGroup={content.id} />
+    <ManualTool client:visible presetGroup={content.id} />
   </section>
 
   <section class="mt-8" aria-labelledby="faq">
