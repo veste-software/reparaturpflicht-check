@@ -1,6 +1,6 @@
 # Reparaturpflicht-Check
 
-**Stage:** building · **Platform:** web · **Score:** 3.3/5 · **Spend:** $6.41
+**Stage:** qa · **Platform:** web · **Score:** 3.3/5 · **Spend:** $6.49
 
 For people in Germany (later DACH and the EU) with a broken washing machine, dishwasher, fridge, dryer, TV/monitor, smartphone or tablet: enter brand and model and see until when the manufacturer must repair it under the new right to repair, computed from the model's EU database market dates plus the legal spare-parts period, with the manufacturer's repair contact and a ready-to-send repair request letter.
 
@@ -42,6 +42,8 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 - [ ] [task 32] Have a lawyer review the legal pages (Impressum, Datenschutz) and fill in the operator placeholders.
 - [ ] [task 33] Confirm the exact start date and the wording of § 479b BGB on gesetze-im-internet.de, and verify the rule table against EUR-Lex.
 - [ ] [task 34] Join affiliate programs and set PUBLIC_AFFILIATE_PARTS_URL_TEMPLATE and PUBLIC_AFFILIATE_REFURB_URL when ready. Optionally set the analytics env vars.
+- [ ] [task 35] Blocked: [QA round 1] Real EPREL fixture src/fixtures/eprel-1417304.json missing (Builder has no network access; a human must run node scripts/refresh-fixtures.mjs 1417304)
+- [ ] [task 36] Blocked: [QA round 1] Lookup, proxy and letter never run against a real EPREL response (Depends on the real EPREL data, which cannot be fetched offline)
 
 ## Recommendation
 
@@ -102,3 +104,4 @@ Free tool with clearly labelled affiliate links (Free for users; affiliate commi
 - 2026-11-06 10:15 · seo · resumed by the operator
 - 2026-11-06 10:21 · qa · seo and conversion foundations written
 - 2026-11-06 10:28 · building · QA round 1 found 2 blocker(s)
+- 2026-11-06 10:33 · qa · all planned tasks done
