@@ -1,6 +1,6 @@
 # Reparaturpflicht-Check
 
-**Stage:** qa · **Platform:** web · **Score:** 3.3/5 · **Spend:** $6.49
+**Stage:** building · **Platform:** web · **Score:** 3.3/5 · **Spend:** $6.60
 
 For people in Germany (later DACH and the EU) with a broken washing machine, dishwasher, fridge, dryer, TV/monitor, smartphone or tablet: enter brand and model and see until when the manufacturer must repair it under the new right to repair, computed from the model's EU database market dates plus the legal spare-parts period, with the manufacturer's repair contact and a ready-to-send repair request letter.
 
@@ -44,6 +44,11 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 - [ ] [task 34] Join affiliate programs and set PUBLIC_AFFILIATE_PARTS_URL_TEMPLATE and PUBLIC_AFFILIATE_REFURB_URL when ready. Optionally set the analytics env vars.
 - [ ] [task 35] Blocked: [QA round 1] Real EPREL fixture src/fixtures/eprel-1417304.json missing (Builder has no network access; a human must run node scripts/refresh-fixtures.mjs 1417304)
 - [ ] [task 36] Blocked: [QA round 1] Lookup, proxy and letter never run against a real EPREL response (Depends on the real EPREL data, which cannot be fetched offline)
+- [ ] [task 37] From a machine with internet access, run `node scripts/refresh-fixtures.mjs 1417304` (or `curl https://eprel.ec.europa.eu/api/product/1417304`) and commit the raw response as src/fixtures/eprel-1417304.json together with eprel-1417304.meta.json holding the fetch time.
+- [ ] [task 38] Find real EPREL registration numbers for tumble dryer, smartphone and display datasheets, and confirm their EPREL group names.
+- [ ] [task 39] Have a lawyer review the Impressum, Datenschutz, letter template and result wording (RDG).
+- [ ] [task 40] Register a domain, connect Cloudflare Pages and set the env vars from .env.example.
+- [ ] [task 41] Read the EPREL Public API terms, and apply for affiliate programs if monetisation is wanted.
 
 ## Recommendation
 
@@ -105,3 +110,4 @@ Free tool with clearly labelled affiliate links (Free for users; affiliate commi
 - 2026-11-06 10:21 · qa · seo and conversion foundations written
 - 2026-11-06 10:28 · building · QA round 1 found 2 blocker(s)
 - 2026-11-06 10:33 · qa · all planned tasks done
+- 2026-11-06 10:39 · building · QA round 2 found 2 blocker(s)
