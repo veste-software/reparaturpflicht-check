@@ -1,0 +1,73 @@
+---
+import '../styles/global.css';
+import { withBase } from '../lib/url';
+
+interface Props {
+  title: string;
+  description: string;
+  /** true for /qr/* result pages (SPEC §5.2) */
+  noindex?: boolean;
+}
+
+const { title, description, noindex = false } = Astro.props;
+
+const analyticsDomain = import.meta.env.PUBLIC_ANALYTICS_DOMAIN;
+const analyticsSrc = import.meta.env.PUBLIC_ANALYTICS_SCRIPT_URL;
+const analyticsEnabled = Boolean(analyticsDomain && analyticsSrc);
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+
+const nav = [
+  { href: withBase(''), label: 'Check' },
+  { href: withBase('musterbrief'), label: 'Musterbrief' },
+  { href: withBase('registriernummer-finden'), label: 'Nummer finden' },
+  { href: withBase('methodik'), label: 'Methodik' },
+];
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+    <link rel="sitemap" href={withBase('sitemap.xml')} />
+    <meta name="generator" content={Astro.generator} />
+    {
+      analyticsEnabled && (
+        <script is:inline defer data-domain={analyticsDomain} src={analyticsSrc} />
+      )
+    }
+  </head>
+  <body class="min-h-screen bg-white text-slate-900 antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:p-2 focus:bg-white">Zum Inhalt springen</a>
+    <header class="border-b border-slate-200 no-print">
+      <div class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-2 px-4 py-3">
+        <a href={withBase('')} class="font-semibold text-emerald-800">Reparaturpflicht-Check</a>
+        <nav aria-label="Hauptnavigation">
+          <ul class="flex flex-wrap gap-3 text-sm">
+            {nav.map((item) => (
+              <li><a class="underline-offset-2 hover:underline" href={item.href}>{item.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="mx-auto max-w-3xl px-4 py-8">
+      <slot />
+    </main>
+    <footer class="border-t border-slate-200 text-sm text-slate-600 no-print">
+      <div class="mx-auto max-w-3xl space-y-2 px-4 py-6">
+        <p>Allgemeine Rechtsinformation, keine Rechtsberatung. Datenquelle: EPREL, Europäische Kommission.</p>
+        <ul class="flex flex-wrap gap-3">
+          <li><a class="underline" href={withBase('impressum')}>Impressum</a></li>
+          <li><a class="underline" href={withBase('datenschutz')}>Datenschutz</a></li>
+          <li><a class="underline" href={withBase('methodik')}>Methodik &amp; Quellen</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

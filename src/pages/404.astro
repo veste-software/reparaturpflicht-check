@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/url';
+---
+
+<Base title="Seite nicht gefunden | Reparaturpflicht-Check" description="Diese Seite gibt es nicht." noindex>
+  <h1 class="text-2xl font-bold">Seite nicht gefunden</h1>
+  <p class="mt-4">
+    Zur Startseite: <a class="underline" href={withBase('')}>Reparaturpflicht-Check</a>
+  </p>
+  <!-- Builder: on GitHub Pages this page also serves /qr/<n>; detect that path client-side and render the result (PLAN.md). -->
+</Base>

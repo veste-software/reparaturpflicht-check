@@ -13,6 +13,10 @@ coverage/
 .claude/
 .mcp.json
 *.log
+npm-debug.log*
+.idea/
+.wrangler/
+.dev.vars
 # Real search data the studio drops in for the Growth role; never published
 growth/data/
 .DS_Store

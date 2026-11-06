@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/url';
+---
+
+<Base
+  title="Reparaturpflicht-Check: Bis wann muss der Hersteller reparieren?"
+  description="Energielabel-QR-Code oder EPREL-Nummer einfügen und sehen, bis wann der Hersteller dein Gerät laut EU-Ersatzteilregeln reparieren muss. Mit Musterbrief."
+>
+  <h1 class="text-2xl font-bold sm:text-3xl">Bis wann muss der Hersteller dein Gerät reparieren?</h1>
+  <p class="mt-4">
+    Seit Ende Juli 2026 müssen Hersteller bestimmte Geräte auf Verlangen reparieren, auch nach Ablauf der
+    Gewährleistung. Die Pflicht gilt 7 oder 10 Jahre ab dem Zeitpunkt, an dem das letzte Gerät des Modells in der EU
+    in Verkehr gebracht wurde. Die Reparatur kann ein angemessenes Entgelt kosten.
+  </p>
+  <!-- Builder: the lookup tool island goes here (PLAN.md). -->
+  <p class="mt-6 text-sm text-slate-600">
+    Wo finde ich die Nummer? <a class="underline" href={withBase('registriernummer-finden')}>Registriernummer finden</a>
+  </p>
+  <p class="mt-6 text-sm text-slate-600">Keine Rechtsberatung.</p>
+</Base>

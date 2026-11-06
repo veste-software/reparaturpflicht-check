@@ -1,0 +1,4 @@
+# Cloudflare Pages (production): serve the client-rendered result shell for any /qr/<n>.
+# The prerendered /qr/1417304/ example keeps priority because static files win over rewrites.
+# GitHub Pages ignores this file; there the 404.html fallback handles /qr/<n>.
+/qr/*  /qr/index.html  200

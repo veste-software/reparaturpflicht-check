@@ -60,6 +60,11 @@ Free tool with clearly labelled affiliate links (Free for users; affiliate commi
 - No EPREL public API key by 2027-01-31: do not build programmatic model pages
 - Affiliate revenue below 20 EUR in total by 2027-05-13: stop investing time
 
+## Links
+
+- Repo: https://github.com/veste-software/reparaturpflicht-check
+- Preview (GitHub Pages, builds from main): https://veste-software.github.io/reparaturpflicht-check/
+
 ## History
 
 - 2026-11-06 08:40 · scouted · picked from the bench: score 3.3, under the usual 3.5; the review panel is skipped, the prototype is how it is judged

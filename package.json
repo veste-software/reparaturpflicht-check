@@ -1,0 +1,31 @@
+{
+  "name": "reparaturpflicht-check",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "build:preview": "SITE_URL=https://example.github.io SITE_BASE=/preview astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "lint": "astro check",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^6.1.2",
+    "@tailwindcss/vite": "^4.3.4",
+    "astro": "^7.4.7",
+    "preact": "^11.2.0",
+    "tailwindcss": "^4.3.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@types/node": "^22.20.5",
+    "typescript": "^6.0.3",
+    "vitest": "^5.1.0"
+  }
+}
