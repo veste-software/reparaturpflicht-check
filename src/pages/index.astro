@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import { withBase } from '../lib/url';
+import LookupTool from '../components/LookupTool';
+import ManualTool from '../components/ManualTool';
 ---
 
 <Base
@@ -13,7 +15,8 @@ import { withBase } from '../lib/url';
     Gewährleistung. Die Pflicht gilt 7 oder 10 Jahre ab dem Zeitpunkt, an dem das letzte Gerät des Modells in der EU
     in Verkehr gebracht wurde. Die Reparatur kann ein angemessenes Entgelt kosten.
   </p>
-  <!-- Builder: the lookup tool island goes here (PLAN.md). -->
+  <LookupTool client:load />
+  <ManualTool client:load />
   <p class="mt-6 text-sm text-slate-600">
     Wo finde ich die Nummer? <a class="underline" href={withBase('registriernummer-finden')}>Registriernummer finden</a>
   </p>

@@ -1,0 +1,13 @@
+---
+import Base from '../../layouts/Base.astro';
+import LookupTool from '../../components/LookupTool';
+---
+
+<Base
+  title="Ergebnis zur Registriernummer | Reparaturpflicht-Check"
+  description="Reparaturfrist des Herstellers für eine EPREL-Registriernummer."
+  noindex
+>
+  <h1 class="text-2xl font-bold sm:text-3xl">Reparaturfrist zur Registriernummer</h1>
+  <LookupTool client:load readFromPath />
+</Base>

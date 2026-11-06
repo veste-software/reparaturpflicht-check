@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { withBase } from '../lib/url';
+import LookupTool from '../components/LookupTool';
 ---
 
 <Base title="Seite nicht gefunden | Reparaturpflicht-Check" description="Diese Seite gibt es nicht." noindex>
@@ -8,5 +9,6 @@ import { withBase } from '../lib/url';
   <p class="mt-4">
     Zur Startseite: <a class="underline" href={withBase('')}>Reparaturpflicht-Check</a>
   </p>
-  <!-- Builder: on GitHub Pages this page also serves /qr/<n>; detect that path client-side and render the result (PLAN.md). -->
+  <!-- GitHub Pages serves unknown /qr/<n> paths through this page; the tool reads <n> from the path. -->
+  <LookupTool client:load readFromPath />
 </Base>
