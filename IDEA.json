@@ -1,0 +1,77 @@
+{
+  "title": "Reparaturpflicht-Check",
+  "pitch": "For people in Germany (later DACH and the EU) with a broken washing machine, dishwasher, fridge, dryer, TV/monitor, smartphone or tablet: enter brand and model and see until when the manufacturer must repair it under the new right to repair, computed from the model's EU database market dates plus the legal spare-parts period, with the manufacturer's repair contact and a ready-to-send repair request letter.",
+  "platform": "web",
+  "language": "de",
+  "targetQueries": [
+    "recht auf reparatur bis wann",
+    "recht auf reparatur waschmaschine wie lange",
+    "wie lange muss hersteller reparieren",
+    "ersatzteile pflicht wie lange waschmaschine",
+    "recht auf reparatur musterbrief",
+    "reparatur beim hersteller verlangen",
+    "[modellnummer] ersatzteile bis wann"
+  ],
+  "evidence": [
+    {
+      "url": "https://www.verbraucherzentrale.de/wissen/vertraege-reklamation/kundenrechte/recht-auf-reparatur-mehr-rechte-seit-31-juli-2026-124253",
+      "note": "Rules since 31 July 2026: the period runs from when the last unit of a model was placed on the market. The page does not explain how to find that date and offers neither a sample letter nor a calculator.",
+      "date": "2026-08-07"
+    },
+    {
+      "url": "https://www.t-online.de/heim-garten/haushaltstipps/haushaltsgeraete/id_101368584/recht-auf-reparatur-fuer-diese-geraete-muessen-hersteller-ersatzteile-liefern.html",
+      "note": "National consumer outlet: purchase date is irrelevant, the period starts with the model's last unit on the market. No way to check that date, no tool, no database, no letter.",
+      "date": "2026-08-01"
+    },
+    {
+      "url": "https://www.biallo.de/verbraucherschutz/news/aenderungen-im-november-2026-das-aendert-sich-fuer-sie-und-ihr-geld/",
+      "note": "New German eco-design law takes effect in November 2026: durability, spare-parts and digital product passport requirements apply step by step per product group (keeps the topic current).",
+      "date": "2026-10-23"
+    },
+    {
+      "url": "https://apify.com/promptica/eprel-etichette-energetiche",
+      "note": "Third-party documentation of the public EPREL endpoint /api/products/{productGroup} with per-model fields incl. onMarketStartDate and onMarketEndDate (sample shows the placeholder 2050-12-31), described as open government data; sample captured via curl.",
+      "date": "2026-07-11"
+    }
+  ],
+  "competitors": [
+    {
+      "name": "Verbraucherzentrale explainer",
+      "url": "https://www.verbraucherzentrale.de/wissen/vertraege-reklamation/kundenrechte/recht-auf-reparatur-mehr-rechte-seit-31-juli-2026-124253",
+      "verdict": "partial",
+      "gap": "Explains the rule only. No per-model date, no calculator, no letter."
+    },
+    {
+      "name": "EPREL (EU energy label database)",
+      "url": "https://build-up.ec.europa.eu/en/resources-and-tools/tools/eprel-european-product-registry-energy-labelling-database",
+      "verdict": "partial",
+      "gap": "Holds model data but does not translate it into a repair-obligation deadline, and gives no consumer guidance in German."
+    },
+    {
+      "name": "Bosch/BSH spare-parts search",
+      "url": "https://www.bosch-home.com/de/service/ersatzteilsuche",
+      "verdict": "partial",
+      "gap": "One brand only, shows voluntary marketing periods (e.g. up to 15 years) instead of the legal obligation per model."
+    },
+    {
+      "name": "ersatzteilshop.de model pages",
+      "url": "https://www.ersatzteilshop.de/ersatzteile-fuer/whirlpool/geschirrspueler",
+      "verdict": "partial",
+      "gap": "Sells parts per model number. Says nothing about the manufacturer's legal repair duty or deadline."
+    }
+  ],
+  "trigger": {
+    "what": "The German law implementing the EU right-to-repair directive applies: manufacturers must repair covered products for as long as spare parts must be kept (7 or 10 years), counted from when the last unit of the model was placed on the market, not from the purchase date",
+    "date": "2026-07-31",
+    "url": "https://www.verbraucherzentrale.de/wissen/vertraege-reklamation/kundenrechte/recht-auf-reparatur-mehr-rechte-seit-31-juli-2026-124253"
+  },
+  "window": "Six to twelve months. The law is three months old and the only open question for consumers (when did my model leave the market?) has no tool yet. Consumer bodies, price portals, spare-parts shops or EPREL itself could add a lookup, and covered product groups grow as new ecodesign rules arrive. Searches run: 'Recht auf Reparatur Rechner ...', 'Ersatzteilpflicht bis wann Modellnummer prüfen online Tool', 'Hersteller verweigert Reparatur ... Musterbrief': no calculator or per-model lookup found.",
+  "monetizationIdea": "Affiliate links on high-intent 'my device is broken' pages: spare parts, refurbished replacement devices, repair services. Display ads on per-model pages. Later expand into other EU languages, since the directive applies EU-wide.",
+  "risks": [
+    "Legal-information tool and template letter: needs clear disclaimers and a lawyer's review (RDG)",
+    "A wrong or outdated end date in EPREL leads to a wrong deadline. Show the source and the date the data was fetched",
+    "The repair is not free, so users expecting free repair may be disappointed",
+    "Dependence on the EPREL public interface",
+    "The small list of manufacturer repair contacts and price pages needs occasional manual checks"
+  ]
+}
