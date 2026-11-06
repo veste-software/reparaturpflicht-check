@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import ManualTool from './ManualTool';
+import { withBase } from '../lib/url';
+import { formatDate } from '../lib/format';
+import { computeDeadline } from '../lib/deadline';
+import { groupById, periodText } from '../lib/rules';
+import { SHARED_FAQ, type GroupContent } from '../data/groups';
+
+interface Props {
+  content: GroupContent;
+}
+const { content } = Astro.props;
+const group = groupById(content.id)!;
+const result = computeDeadline(group, content.example.onMarketEnd, content.example.onMarketEnd);
+const exampleDeadline = result.kind === 'covered' ? formatDate(result.deadline) : '';
+const faq = [...content.faq, ...SHARED_FAQ];
+---
+
+<Base title={content.title} description={content.description}>
+  <h1 class="text-2xl font-bold sm:text-3xl">{content.h1}</h1>
+  {content.intro.map((p) => <p class="mt-4">{p}</p>)}
+
+  <section class="mt-8" aria-labelledby="regel">
+    <h2 id="regel" class="text-xl font-bold">Die Regel auf einen Blick</h2>
+    <dl class="mt-3 rounded border border-slate-300 p-4">
+      <div class="flex flex-wrap gap-2"><dt class="font-semibold">Frist:</dt><dd>{periodText(group)} nach dem Ende des Verkaufs</dd></div>
+      <div class="flex flex-wrap gap-2"><dt class="font-semibold">Gilt ab:</dt><dd>{formatDate(group.appliesFrom)}</dd></div>
+      <div class="flex flex-wrap gap-2">
+        <dt class="font-semibold">Rechtsgrundlage:</dt>
+        <dd><a class="underline" href={group.regulationUrl} rel="noopener">{group.regulation}</a></dd>
+      </div>
+    </dl>
+    {content.ruleExplanation.map((p) => <p class="mt-4">{p}</p>)}
+    <p class="mt-4">{content.startNote}</p>
+  </section>
+
+  <section class="mt-8" aria-labelledby="beispiel">
+    <h2 id="beispiel" class="text-xl font-bold">Beispiel: so rechnet der Check</h2>
+    <p class="mt-3">
+      Endete der Verkauf eines Modells am {formatDate(content.example.onMarketEnd)}, endet die Frist laut den
+      EU-Ersatzteilregeln am <strong>{exampleDeadline}</strong>
+      ({group.years} Jahre später).
+    </p>
+    <p class="mt-2 text-sm text-slate-700">{content.example.note}</p>
+  </section>
+
+  <section class="mt-8" aria-labelledby="rechner">
+    <h2 id="rechner" class="text-xl font-bold">Prüfe dein Gerät</h2>
+    <p class="mt-3">
+      Mit Registriernummer geht es auf der <a class="underline" href={withBase('')}>Startseite</a> automatisch. Hier
+      kannst du das Datum von Hand eingeben.
+    </p>
+    <ManualTool client:load presetGroup={content.id} />
+  </section>
+
+  <section class="mt-8" aria-labelledby="faq">
+    <h2 id="faq" class="text-xl font-bold">Häufige Fragen</h2>
+    {faq.map((f) => (
+      <details class="mt-3 rounded border border-slate-300 p-3">
+        <summary class="cursor-pointer font-semibold">{f.q}</summary>
+        <p class="mt-2">{f.a}</p>
+      </details>
+    ))}
+  </section>
+
+  <p class="mt-8 text-sm text-slate-700">
+    Weiter: <a class="underline" href={withBase('musterbrief')}>Musterbrief an den Hersteller</a> ·
+    <a class="underline" href={withBase('registriernummer-finden')}>Registriernummer finden</a>
+  </p>
+  <p class="mt-4 text-sm font-semibold">
+    Keine Rechtsberatung. Datenquelle: EPREL, Europäische Kommission. Die Reparatur kann ein angemessenes Entgelt
+    kosten.
+  </p>
+</Base>
