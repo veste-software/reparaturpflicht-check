@@ -1,6 +1,6 @@
 # Reparaturpflicht-Check
 
-**Stage:** seo · **Platform:** web · **Score:** 3.3/5 · **Spend:** $5.96
+**Stage:** qa · **Platform:** web · **Score:** 3.3/5 · **Spend:** $6.18
 
 For people in Germany (later DACH and the EU) with a broken washing machine, dishwasher, fridge, dryer, TV/monitor, smartphone or tablet: enter brand and model and see until when the manufacturer must repair it under the new right to repair, computed from the model's EU database market dates plus the legal spare-parts period, with the manufacturer's repair contact and a ready-to-send repair request letter.
 
@@ -30,6 +30,13 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 - [ ] [task 20] Blocked: E3 Performance basics (JS gzip size) and E4 Final pass (Bash was denied in this session, so npm test, build, lint, build:preview, check:dist and the gzip size check could not be run. A session with shell access is needed.)
 - [ ] [task 21] Blocked: E3 Performance basics: measure total JS gzip size on / (< 50 KB) (Bash is denied in this environment, so the build and gzip sizes of dist/_astro could not be measured.)
 - [ ] [task 22] Blocked: E4 Final pass: run test, lint, build, build:preview, check:dist and walk SPEC §6 items 1-18 (Bash is denied in this environment, so none of the commands could be run.)
+- [ ] [task 23] Set SITE_URL to the production domain and deploy
+- [ ] [task 24] Verify the domain in Google Search Console and Bing Webmaster Tools, submit sitemap.xml (Bing also gives IndexNow)
+- [ ] [task 25] Set PUBLIC_ANALYTICS_DOMAIN and PUBLIC_ANALYTICS_SCRIPT_URL for cookie-free analytics
+- [ ] [task 26] Request an EPREL public API key at https://eprel.ec.europa.eu/screen/requestpublicapikey (unlocks model pages in phase 2)
+- [ ] [task 27] Join affiliate programs and set PUBLIC_AFFILIATE_PARTS_URL_TEMPLATE and PUBLIC_AFFILIATE_REFURB_URL
+- [ ] [task 28] Submit to fitting directories (AlternativeTo, Product Hunt) and post in relevant communities following each one's rules, as described in growth/PLAN.md
+- [ ] [task 29] Fill in the operator data in Impressum and Datenschutz and have a lawyer review the legal pages
 
 ## Recommendation
 
@@ -88,3 +95,4 @@ Free tool with clearly labelled affiliate links (Free for users; affiliate commi
 - 2026-11-06 09:05 · building · build started
 - 2026-11-06 10:06 · parked · the builder made no progress in 2 runs in a row (2 tasks still open)
 - 2026-11-06 10:15 · seo · resumed by the operator
+- 2026-11-06 10:21 · qa · seo and conversion foundations written
