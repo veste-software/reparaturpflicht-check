@@ -1,6 +1,6 @@
 # Reparaturpflicht-Check
 
-**Stage:** qa · **Platform:** web · **Score:** 3.3/5 · **Spend:** $7.24
+**Stage:** parked · **Platform:** web · **Score:** 3.3/5 · **Spend:** $7.34
 
 For people in Germany (later DACH and the EU) with a broken washing machine, dishwasher, fridge, dryer, TV/monitor, smartphone or tablet: enter brand and model and see until when the manufacturer must repair it under the new right to repair, computed from the model's EU database market dates plus the legal spare-parts period, with the manufacturer's repair contact and a ready-to-send repair request letter.
 
@@ -8,6 +8,7 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 
 ## Needs you
 
+- [ ] Parked: QA still failing after 3 rounds: Real EPREL fixture src/fixtures/eprel-1417304.json is missing. SPEC 6.4 (proxy whitelist test on the real record), 6.6 (rendered Bosch/WAJ240L2SN/27.12.2034/München result), 6.7 (/qr/1417304 prerendered with noindex) and 6.11 (real EPREL examples on group pages) are unmet. dist/qr contains only ind…. Fix it, then `npm run studio -- unpark reparaturpflicht-check`, or `npm run studio -- kill reparaturpflicht-check`
 - [ ] [task 1] Register a domain and connect Cloudflare Pages (or chosen host); set env vars from .env.example
 - [ ] [task 2] Fill operator data into Impressum and Datenschutz drafts
 - [ ] [task 3] Have a lawyer review the legal pages, the repair-request letter template and the result wording (RDG)
@@ -70,6 +71,11 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 - [ ] [task 60] Confirm the exact effective date and § 479b wording of the BGB repair rules on gesetze-im-internet.de.
 - [ ] [task 61] Blocked: [QA round 2] Real EPREL fixture src/fixtures/eprel-1417304.json missing (Needs network access to EPREL; a human must run node scripts/refresh-fixtures.mjs 1417304 and commit the result)
 - [ ] [task 62] Blocked: [QA round 2] Lookup, proxy and letter never run against a real EPREL response (Needs real EPREL responses to verify contactDetails/date shapes and group name mapping; depends on the fixture)
+- [ ] [task 63] On a networked machine run `node scripts/refresh-fixtures.mjs 1417304`, check that src/fixtures/eprel-1417304.json is a real EPREL response, then have the Builder wire up the fixture, the proxy test, the prerendered /qr/1417304/ and the group-page examples.
+- [ ] [task 64] Confirm the EPREL product group names for tumble dryers, smartphones/tablets and displays against real records.
+- [ ] [task 65] Have a lawyer review the legal pages (Impressum, Datenschutz) and the RDG wording on the result pages.
+- [ ] [task 66] Verify the exact BGB entry-into-force date and the § 479b wording on gesetze-im-internet.de.
+- [ ] [task 67] Join affiliate programs and set the PUBLIC_AFFILIATE_* variables when ready.
 
 ## Recommendation
 
@@ -122,7 +128,6 @@ Free tool with clearly labelled affiliate links (Free for users; affiliate commi
 
 ## History
 
-- 2026-11-06 10:15 · seo · resumed by the operator
 - 2026-11-06 10:21 · qa · seo and conversion foundations written
 - 2026-11-06 10:28 · building · QA round 1 found 2 blocker(s)
 - 2026-11-06 10:33 · qa · all planned tasks done
@@ -134,3 +139,4 @@ Free tool with clearly labelled affiliate links (Free for users; affiliate commi
 - 2026-11-07 07:54 · qa · all planned tasks done
 - 2026-11-07 08:00 · building · QA round 2 found 2 blocker(s)
 - 2026-11-07 08:05 · qa · all planned tasks done
+- 2026-11-07 08:11 · parked · QA still failing after 3 rounds: Real EPREL fixture src/fixtures/eprel-1417304.json is missing. SPEC 6.4 (proxy whitelist test on the real record), 6.6 (rendered Bosch/WAJ240L2SN/27.12.2034/München result), 6.7 (/qr/1417304 prerendered with noindex) and 6.11 (real EPREL examples on group pages) are unmet. dist/qr contains only ind…
