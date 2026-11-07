@@ -85,5 +85,5 @@ Ordered so that a thin end-to-end version (number in → deadline out, visible o
 
 ## QA round 1
 
-- [ ] [QA round 1] Real EPREL fixture src/fixtures/eprel-1417304.json is missing. SPEC 6.4 (proxy test on the real record), 6.6 (rendered Bosch/WAJ240L2SN/27.12.2034/München result), 6.7 (prerendered /qr/1417304 with n… (src/fixtures/, src/pages/qr/, src/data/groups.ts, public/_redirects, CLAUDE.md)
-- [ ] [QA round 1] The core lookup, proxy and letter have never run against a real EPREL response. The contactDetails and date field shapes and the EPREL group names for tumble dryers, smartphones and displays are unve… (src/lib/eprel.ts, src/lib/eprel-proxy.ts, src/lib/rules.ts)
+- [~] [QA round 1] Real EPREL fixture src/fixtures/eprel-1417304.json is missing. SPEC 6.4 (proxy test on the real record), 6.6 (rendered Bosch/WAJ240L2SN/27.12.2034/München result), 6.7 (prerendered /qr/1417304 with n… (src/fixtures/, src/pages/qr/, src/data/groups.ts, public/_redirects, CLAUDE.md) (BLOCKED: needs network access to EPREL; human must run node scripts/refresh-fixtures.mjs 1417304)
+- [~] [QA round 1] The core lookup, proxy and letter have never run against a real EPREL response. The contactDetails and date field shapes and the EPREL group names for tumble dryers, smartphones and displays are unve… (src/lib/eprel.ts, src/lib/eprel-proxy.ts, src/lib/rules.ts) (BLOCKED: needs real EPREL responses; depends on the fixture)
