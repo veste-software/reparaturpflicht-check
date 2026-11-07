@@ -1,3 +1,23 @@
+# QA report, round 5 (latest, orchestrator review round 2 of 3)
+
+Verdict: **FAIL**. The code is unchanged. `src/fixtures/` still does not exist, so the same 2 blockers remain.
+
+## Re-checked
+- `npm test` passes. `npm run build:preview` builds 15 pages. `node scripts/check-dist.mjs dist /preview` is OK.
+- `npm audit --omit=dev`: 0 vulnerabilities.
+- `dist/qr/` holds only `index.html`, so `/qr/1417304/` is not prerendered.
+- QA's network access to EPREL is still denied (the `curl` was refused). I did not hand-write a record, because that would be invented data.
+
+## Blockers
+- (high) No real EPREL fixture `src/fixtures/eprel-1417304.json`. SPEC §6.4, §6.6, §6.7 and §6.11 are unmet.
+- (high) The lookup, proxy and letter have never run against a real EPREL response.
+
+Human step: run `node scripts/refresh-fixtures.mjs 1417304` on a networked machine. Then the Builder wires up the fixture, the proxy test, the prerendered `/qr/1417304/` and the real group-page examples.
+
+Older rounds follow below.
+
+---
+
 # QA report, round 1
 
 Verdict: **FAIL** (2 blockers, both come from the missing real EPREL fixture).
@@ -105,3 +125,8 @@ Both need one human step: run `node scripts/refresh-fixtures.mjs 1417304` on a n
 
 - (high) Real EPREL fixture src/fixtures/eprel-1417304.json is missing. SPEC 6.4 (proxy test on the real record), 6.6 (rendered Bosch/WAJ240L2SN/27.12.2034/München result), 6.7 (prerendered /qr/1417304 with noindex) and 6.11 (real EPREL example on group pages) are unmet. dist/qr holds only the client shell. CLAUDE.md and public/_redirects describe a prerendered page that does not exist. [src/fixtures/, src/pages/qr/, src/data/groups.ts, public/_redirects, CLAUDE.md]
 - (high) The core lookup, proxy and letter have never run against a real EPREL response. The contactDetails and date field shapes and the EPREL group names for tumble dryers, smartphones and displays are unverified. A mismatch would break every live lookup or leave the letter without a manufacturer address. [src/lib/eprel.ts, src/lib/eprel-proxy.ts, src/lib/rules.ts]
+
+## Round 2: blockers
+
+- (high) Real EPREL fixture src/fixtures/eprel-1417304.json is missing. SPEC 6.4 (proxy test on the real record), 6.6 (rendered Bosch/WAJ240L2SN/27.12.2034/München result), 6.7 (prerendered /qr/1417304 with noindex) and 6.11 (real EPREL example on group pages) are unmet. dist/qr holds only the client shell. CLAUDE.md and public/_redirects describe a prerendered page that does not exist. [src/fixtures/, src/pages/qr/, src/data/groups.ts, public/_redirects, CLAUDE.md]
+- (high) The core lookup, proxy and letter have never run against a real EPREL response. The contactDetails and date field shapes in pickEprelFields and the EPREL group names for tumble dryers, smartphones and displays are unverified. A mismatch would break every live lookup or leave the letter without a manufacturer address. [src/lib/eprel.ts, src/lib/eprel-proxy.ts, src/lib/rules.ts]
