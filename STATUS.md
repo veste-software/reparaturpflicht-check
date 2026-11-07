@@ -1,6 +1,6 @@
 # Reparaturpflicht-Check
 
-**Stage:** qa · **Platform:** web · **Score:** 3.3/5 · **Spend:** $6.85
+**Stage:** building · **Platform:** web · **Score:** 3.3/5 · **Spend:** $7.00
 
 For people in Germany (later DACH and the EU) with a broken washing machine, dishwasher, fridge, dryer, TV/monitor, smartphone or tablet: enter brand and model and see until when the manufacturer must repair it under the new right to repair, computed from the model's EU database market dates plus the legal spare-parts period, with the manufacturer's repair contact and a ready-to-send repair request letter.
 
@@ -56,6 +56,11 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 - [ ] [task 46] Have a lawyer review the Impressum, Datenschutz, the letter text and the result wording (RDG).
 - [ ] [task 47] Read the EPREL Public API terms and request a public API key (phase 2 only).
 - [ ] [task 48] Join affiliate programs and set the affiliate env vars; optionally set up cookie-free analytics.
+- [ ] [task 49] On a machine with internet access, run `node scripts/refresh-fixtures.mjs 1417304` (or `curl https://eprel.ec.europa.eu/api/product/1417304`) and commit the raw response as src/fixtures/eprel-1417304.json with a meta file holding the fetch time. Then let the Builder wire up the proxy test, the prerendered /qr/1417304/ and the real group-page examples.
+- [ ] [task 50] Fetch one real EPREL record per product group (tumble dryer, smartphone/tablet, display, dishwasher, fridge) to confirm the group names used in rules.ts.
+- [ ] [task 51] Confirm the exact effective date of §§ 479a ff. BGB and the wording of § 479b on gesetze-im-internet.de.
+- [ ] [task 52] Have a lawyer review the legal pages (Impressum, Datenschutz) and the RDG-sensitive wording.
+- [ ] [task 53] Fill in the operator data placeholders in the Impressum and Datenschutz pages.
 
 ## Recommendation
 
@@ -108,7 +113,6 @@ Free tool with clearly labelled affiliate links (Free for users; affiliate commi
 
 ## History
 
-- 2026-11-06 08:47 · specced · spec written
 - 2026-11-06 08:58 · planned · scaffold and plan written
 - 2026-11-06 09:05 · building · build started
 - 2026-11-06 10:06 · parked · the builder made no progress in 2 runs in a row (2 tasks still open)
@@ -120,3 +124,4 @@ Free tool with clearly labelled affiliate links (Free for users; affiliate commi
 - 2026-11-06 10:44 · qa · all planned tasks done
 - 2026-11-06 10:50 · parked · QA still failing after 3 rounds: Real EPREL fixture src/fixtures/eprel-1417304.json is missing. The proxy test uses a synthetic record, there is no rendered Bosch/WAJ240L2SN/27.12.2034/München result, /qr/1417304 is not prerendered (dist/qr has only the client shell), and group-page examples are computed Rechenbeispiele, not real …
 - 2026-11-07 07:44 · qa · resumed by the operator
+- 2026-11-07 07:49 · building · QA round 1 found 2 blocker(s)
