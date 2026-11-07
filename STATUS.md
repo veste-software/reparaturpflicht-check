@@ -1,6 +1,6 @@
 # Reparaturpflicht-Check
 
-**Stage:** parked · **Platform:** web · **Score:** 3.3/5 · **Spend:** $6.85
+**Stage:** qa · **Platform:** web · **Score:** 3.3/5 · **Spend:** $6.85
 
 For people in Germany (later DACH and the EU) with a broken washing machine, dishwasher, fridge, dryer, TV/monitor, smartphone or tablet: enter brand and model and see until when the manufacturer must repair it under the new right to repair, computed from the model's EU database market dates plus the legal spare-parts period, with the manufacturer's repair contact and a ready-to-send repair request letter.
 
@@ -8,7 +8,6 @@ For people in Germany (later DACH and the EU) with a broken washing machine, dis
 
 ## Needs you
 
-- [ ] Parked: QA still failing after 3 rounds: Real EPREL fixture src/fixtures/eprel-1417304.json is missing. The proxy test uses a synthetic record, there is no rendered Bosch/WAJ240L2SN/27.12.2034/München result, /qr/1417304 is not prerendered (dist/qr has only the client shell), and group-page examples are computed Rechenbeispiele, not real …. Fix it, then `npm run studio -- unpark reparaturpflicht-check`, or `npm run studio -- kill reparaturpflicht-check`
 - [ ] [task 1] Register a domain and connect Cloudflare Pages (or chosen host); set env vars from .env.example
 - [ ] [task 2] Fill operator data into Impressum and Datenschutz drafts
 - [ ] [task 3] Have a lawyer review the legal pages, the repair-request letter template and the result wording (RDG)
@@ -109,7 +108,6 @@ Free tool with clearly labelled affiliate links (Free for users; affiliate commi
 
 ## History
 
-- 2026-11-06 08:40 · scouted · picked from the bench: score 3.3, under the usual 3.5; the review panel is skipped, the prototype is how it is judged
 - 2026-11-06 08:47 · specced · spec written
 - 2026-11-06 08:58 · planned · scaffold and plan written
 - 2026-11-06 09:05 · building · build started
@@ -121,3 +119,4 @@ Free tool with clearly labelled affiliate links (Free for users; affiliate commi
 - 2026-11-06 10:39 · building · QA round 2 found 2 blocker(s)
 - 2026-11-06 10:44 · qa · all planned tasks done
 - 2026-11-06 10:50 · parked · QA still failing after 3 rounds: Real EPREL fixture src/fixtures/eprel-1417304.json is missing. The proxy test uses a synthetic record, there is no rendered Bosch/WAJ240L2SN/27.12.2034/München result, /qr/1417304 is not prerendered (dist/qr has only the client shell), and group-page examples are computed Rechenbeispiele, not real …
+- 2026-11-07 07:44 · qa · resumed by the operator
